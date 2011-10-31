@@ -1,6 +1,6 @@
-#$Id: interface.py,v 1.1 2004/03/18 05:44:21 mandava Exp $
-#This is a program which combines  menubar, text area and file browser  
-#into a single interface.
+#J Heaton - Spinner.py
+# Article Spinner
+#
 #
 
 from Tkinter import *
@@ -10,11 +10,7 @@ import tkFileDialog, csv, random, re
 class mywidgets:
 	def __init__(self,root):
 	
-		#self.svariables = {
-			#'#$1':'skip hire',
-			#'#$2':'waste removal',
-			#'#$3':'skip',					
-		#}
+		
 		self.svariables = {}
 		
 		self.tentries = {}
@@ -73,7 +69,6 @@ class mywidgets:
 		
 	def copy(self, event=None):
 		text = self.text.get(1.0, END)	
-		#self.root.withdraw()
 		self.root.clipboard_clear()
 		self.root.clipboard_append(text)
 		
@@ -85,7 +80,6 @@ class mywidgets:
 		
 	def openDefault(self):
 		print "Opening Default"
-		#file = open('spinning.csv', 'rw')	
 		self.text.delete(1.0, END)
 		self.textraw.delete(1.0, END)
 		file = csv.reader(open(self.filename, 'rb'), delimiter=',', quotechar='"')
@@ -146,8 +140,6 @@ class mywidgets:
 			sentence = sentence[:-1]
 			print "removing brace }"
 			
-		#print SpinSentence	
-		#print sentence
 		
 		def wordReplace( match ):
 			choices = match.group().split("|")
@@ -188,12 +180,7 @@ class mywidgets:
 		mb_file.menu = Menu(mb_file)
 		mb_file.menu.add_command(label = 'spin',command = self.openDefault)
 		mb_file.menu.add_command(label = 'open',command = self.file_open)
-		#mb_edit = Menubutton(menubar,text = 'edit')
-		#mb_edit.pack(side = LEFT)
-		#mb_edit.menu = Menu(mb_edit)
-		#mb_edit.menu.add_command(label = 'copy')
-		#mb_help = Menubutton(menubar,text = 'help')
-		#mb_help.pack(padx = 25,side = RIGHT)
+	
 		mb_file['menu'] = mb_file.menu
  		#mb_edit['menu'] = mb_edit.menu
 		return
